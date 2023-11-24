@@ -4,6 +4,14 @@
 @use "@styles/z-index";
 @use "@styles/misc";
 
+.collapseMenuItem {
+  display: none;
+
+  @media (min-width: breakpoint.$desktop) {
+    display: flex;
+  }
+}
+
 .container,
 .fixedContainer {
   width: 100%;
@@ -22,6 +30,10 @@
       .logo {
         width: 1.4375rem;
       }
+    }
+
+    .collapseMenuItem {
+      transform: rotate(180deg);
     }
   }
 }
@@ -130,12 +142,4 @@
 .linkList {
   composes: list;
   flex: 1;
-}
-
-.collapseMenuItem {
-  display: none;
-
-  @media (min-width: breakpoint.$desktop) {
-    display: flex;
-  }
 }
