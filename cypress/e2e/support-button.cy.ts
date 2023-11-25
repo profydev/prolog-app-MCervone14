@@ -5,7 +5,7 @@ describe("Support button works", () => {
   });
 
   it("opens up email with pre-filled information", () => {
-    cy.get("button[name='support']")
+    cy.get("button[name=support]")
       .click({ force: true })
       .then(() => {
         console.log("clicked support button");
