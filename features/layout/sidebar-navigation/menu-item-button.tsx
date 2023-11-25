@@ -7,8 +7,9 @@ type MenuItemProps = {
   className?: string;
   text: string;
   iconSrc: string;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   isCollapsed: boolean;
+  name?: string;
 };
 
 export function MenuItemButton({
@@ -17,10 +18,11 @@ export function MenuItemButton({
   onClick,
   iconSrc,
   isCollapsed,
+  name,
 }: MenuItemProps) {
   return (
     <li className={classNames(styles.listItem, className)}>
-      <Button className={styles.anchor} onClick={onClick}>
+      <Button name={name} className={styles.anchor} onClick={onClick}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className={styles.icon} src={iconSrc} alt={`${text} icon`} />{" "}
         {!isCollapsed && text}{" "}
