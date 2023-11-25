@@ -1,14 +1,13 @@
 describe("Support button works", () => {
-  beforeEach(() => {
+  it("Clicks the Support button and checks the mailto link", () => {
     cy.viewport(1025, 900);
     cy.visit("http://localhost:3000/dashboard");
-  });
 
-  it("opens up email with pre-filled information", () => {
-    cy.get("button[name=support]")
-      .click({ force: true })
-      .then(() => {
-        console.log("clicked support button");
-      });
+    cy.get("nav").contains("Support").click();
+
+    cy.location("href").should(
+      "eq",
+      "mailto:support@prolog-app.com?subject=Support%20Request:",
+    );
   });
 });
