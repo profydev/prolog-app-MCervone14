@@ -7,7 +7,7 @@ type MenuItemProps = {
   className?: string;
   text: string;
   iconSrc: string;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick: () => void;
   isCollapsed: boolean;
 };
 
