@@ -13,7 +13,7 @@ export enum BadgeColor {
   gray = "gray",
   error = "error",
   warning = "warning",
-  success = "success",
+  info = "success",
 }
 
 type BadgeProps = {

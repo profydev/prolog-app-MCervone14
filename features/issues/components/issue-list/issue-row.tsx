@@ -11,7 +11,7 @@ type IssueRowProps = {
 };
 
 const levelColors = {
-  [IssueLevel.info]: BadgeColor.success,
+  [IssueLevel.info]: BadgeColor.info,
   [IssueLevel.warning]: BadgeColor.warning,
   [IssueLevel.error]: BadgeColor.error,
 };
