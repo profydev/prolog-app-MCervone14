@@ -1,0 +1,74 @@
+@use "@styles/color";
+@use "@styles/font";
+@use "@styles/space";
+@use "@styles/breakpoint";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: color.$gray-50;
+  align-items: center;
+  padding: space.$s0 space.$s3;
+
+  @media (min-width: breakpoint.$desktop) {
+    flex-direction: row;
+    padding: 13.5px space.$s8;
+    max-height: 60px;
+  }
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: space.$s6;
+
+  @media (min-width: breakpoint.$desktop) {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: space.$s0;
+  }
+
+  .version {
+    text-align: center;
+    width: 160px;
+    color: color.$gray-400;
+    font: font.$text-md-regular;
+    order: 3;
+
+    @media (min-width: breakpoint.$desktop) {
+      order: unset;
+      text-align: left;
+    }
+  }
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  list-style-type: none;
+  padding: space.$s0 space.$s6;
+  margin: space.$s0;
+  font: font.$text-md-medium;
+}
+
+.link {
+  color: color.$gray-500;
+  text-decoration: none;
+}
+
+.logo {
+  width: 160px;
+  display: flex;
+  padding: space.$s6 space.$s0;
+  justify-content: center;
+
+  @media (min-width: breakpoint.$desktop) {
+    justify-content: flex-end;
+    padding: space.$s0;
+  }
+}
