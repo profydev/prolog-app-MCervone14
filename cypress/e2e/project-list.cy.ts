@@ -26,6 +26,7 @@ describe("Project List", () => {
       // get all project cards
       cy.get("main")
         .find("li")
+        .first()
         .each(($el, index) => {
           let newStatus = "";
           if (mockProjects[index].status === "info") {
