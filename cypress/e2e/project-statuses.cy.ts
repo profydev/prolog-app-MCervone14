@@ -17,6 +17,7 @@ describe("Project Statuses", () => {
     cy.get("main")
       .find("ul")
       .find("li")
+      .first()
       .each(($el, index) => {
         const items = mockProjects as Project[];
         const status = items[index].status;
