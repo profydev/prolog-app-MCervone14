@@ -1,0 +1,20 @@
+@use "@styles/color";
+
+.containerStyle {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+}
+
+.circleStyle {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  border: 0.5rem solid color.$primary-50;
+  border-top: 0.5rem solid color.$primary-600;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
