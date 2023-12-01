@@ -1,10 +1,10 @@
 import { ProjectCard } from "../project-card";
 import { useGetProjects } from "../../api/use-get-projects";
 import styles from "./project-list.module.scss";
-import { CircleSpinner } from "@features/ui";
+import { CircleSpinner, ErrorMessage } from "@features/ui";
 
 export function ProjectList() {
-  const { data, isLoading, isError, error } = useGetProjects();
+  const { data, isLoading, isError, error, refetch } = useGetProjects();
 
   if (isLoading) {
     return (
@@ -15,8 +15,11 @@ export function ProjectList() {
   }
 
   if (isError) {
-    console.error(error);
-    return <div>Error: {error.message}</div>;
+    return (
+      <div>
+        <ErrorMessage refetch={refetch} error={error} />
+      </div>
+    );
   }
 
   return (
