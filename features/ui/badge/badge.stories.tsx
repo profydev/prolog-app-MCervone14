@@ -5,10 +5,6 @@ import { Badge, BadgeSize, BadgeColor } from "./badge";
 export default {
   title: "UI/Badge",
   component: Badge,
-  parameters: {
-    // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
-    layout: "fullscreen",
-  },
 } as Meta<typeof Badge>;
 
 const Template: StoryFn<typeof Badge> = ({ size, color, children }) => (
