@@ -1,18 +1,199 @@
+@use "@styles/color";
+@use "@styles/font";
+@use "@styles/space";
+
 .button {
   cursor: pointer;
 
   /* remove default button styles */
-  border: none;
   margin: 0;
   padding: 0;
   background: transparent;
   line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
   appearance: none;
+  border: 1px solid transparent;
+  border-radius: space.$s2;
 
   &::-moz-focus-inner {
     border: 0;
     padding: 0;
+  }
+
+  &.sm {
+    padding: space.$s2 0.875rem;
+    font: font.$text-xs-medium;
+  }
+
+  &.md {
+    padding: 0.625rem space.$s4;
+    font: font.$text-xs-medium;
+  }
+
+  &.lg {
+    padding: 0.625rem 1.125rem;
+    font: font.$text-sm-medium;
+  }
+
+  &.xl {
+    padding: space.$s3 space.$s5;
+    font: font.$text-md-medium;
+  }
+
+  &.primary {
+    background: color.$primary-600;
+    color: white;
+
+    &:hover {
+      background: color.$primary-700;
+    }
+
+    &:focus {
+      background: color-mix(
+        in srgb,
+        color.$primary-600 50%,
+        color.$primary-100 50%
+      );
+      border: space.$s1 solid color.$primary-100;
+      outline: none;
+    }
+
+    &:disabled {
+      background: color.$primary-200;
+      color: white;
+    }
+  }
+
+  &.secondary {
+    background: color.$primary-50;
+    color: color.$primary-700;
+
+    &:hover {
+      background: color.$primary-100;
+    }
+
+    &:focus {
+      background: color-mix(
+        in srgb,
+        color.$primary-50 50%,
+        color.$primary-100 50%
+      );
+      border: space.$s1 solid color.$primary-100;
+      outline: none;
+    }
+
+    &:disabled {
+      background: color.$primary-25;
+      color: color.$primary-300;
+    }
+  }
+
+  &.gray {
+    background: white;
+    color: color.$gray-700;
+    border: 1px solid color.$gray-300;
+
+    &:hover {
+      background: color.$gray-50;
+      color: color.$gray-800;
+    }
+
+    &:focus {
+      background: white;
+      box-shadow:
+        0 0 0 4px #f2f4f7,
+        0 1px 2px 0 rgb(16 24 40 / 5%);
+      outline: none;
+    }
+
+    &:disabled {
+      border: 1px solid color.$gray-200;
+      background: white;
+      color: color.$gray-300;
+    }
+  }
+
+  &.empty {
+    background: transparent;
+    color: color.$primary-700;
+    border: none;
+
+    &:hover {
+      background: color.$primary-50;
+    }
+
+    &:focus {
+      background: transparent;
+      outline: none;
+    }
+
+    &:disabled {
+      background: white;
+      color: color.$gray-300;
+    }
+  }
+
+  &.empty-gray {
+    background: transparent;
+    color: color.$gray-500;
+    border: none;
+
+    &:hover {
+      background: color.$gray-50;
+      color: color.$gray-600;
+    }
+
+    &:focus {
+      background: transparent;
+      outline: none;
+    }
+
+    &:disabled {
+      background: transparent;
+      color: color.$gray-300;
+    }
+  }
+
+  &.error {
+    background: color.$error-600;
+    color: white;
+    box-shadow: 0 1px 2px 0 rgb(16 24 40 / 5%);
+
+    &:hover {
+      background: color.$error-700;
+    }
+
+    &:focus {
+      background: color.$error-600;
+      border: space.$s1 solid color.$error-100;
+      box-shadow:
+        0 0 0 4px #fee4e2,
+        0 1px 2px 0 rgb(16 24 40 / 5%);
+      outline: none;
+    }
+
+    &:disabled {
+      background: color.$error-200;
+      border: 1px solid color.$error-200;
+    }
+  }
+
+  &.leading {
+    padding: 0.625rem space.$s4;
+    gap: space.$s2;
+  }
+
+  &.trailing {
+    padding: 0.625rem space.$s4;
+    gap: space.$s2;
+  }
+
+  &.only {
+    padding: 0.625rem;
+    margin: 0;
   }
 }
