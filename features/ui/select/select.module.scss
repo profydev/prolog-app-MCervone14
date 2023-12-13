@@ -2,18 +2,15 @@
 @use "styles/space";
 @use "styles/font";
 
-html {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 .container {
   display: flex;
   flex-direction: column;
 }
 
-button {
+.selectMenu {
+  width: 20rem;
+  height: 2.75rem;
+  position: relative;
   border: none;
   outline: none;
   cursor: pointer;
@@ -28,12 +25,6 @@ button {
     color: color.$gray-300;
     cursor: not-allowed;
   }
-}
-
-.selectMenu {
-  width: 20rem;
-  height: 2.75rem;
-  position: relative;
 }
 
 .errorMessageText {
@@ -92,6 +83,7 @@ button {
 
 .selectMenu .options {
   position: relative;
+  padding: 0;
   border-radius: space.$s2;
   background-color: #fff;
   box-shadow:
@@ -101,6 +93,7 @@ button {
 
 .options .option {
   position: relative;
+  border-radius: space.$s2;
   display: flex;
   cursor: pointer;
   padding: 10px 14px;
