@@ -9,13 +9,14 @@
   width: 100%;
   max-width: 4.625rem;
   max-height: 1.5rem;
+  gap: space.$s2;
 }
 
-input[type="checkbox"] {
+.checkbox {
   opacity: 0;
 }
 
-input[type="checkbox"] + label {
+.checkbox + label {
   position: relative;
   padding-left: 30px;
   cursor: pointer;
@@ -24,13 +25,13 @@ input[type="checkbox"] + label {
   font: font.$text-md-medium;
 }
 
-input[data-state="partly-checked"] + label::before {
+.checkbox[data-state="partly-checked"] + label::before {
   background: color.$primary-50;
   outline: 1px solid color.$primary-600;
   border-radius: 6px;
 }
 
-input[data-state="partly-checked"] + label::after {
+.checkbox[data-state="partly-checked"] + label::after {
   content: "";
   position: absolute;
   left: 0;
@@ -40,11 +41,11 @@ input[data-state="partly-checked"] + label::after {
   background: url("../../../public/icons/minus.svg") no-repeat center center;
 }
 
-input[type="checkbox"].sm + label {
+.checkbox[type="checkbox"].sm + label {
   font: font.$text-sm-medium;
 }
 
-input[type="checkbox"] + label::before {
+.checkbox[type="checkbox"] + label::before {
   content: "";
   position: absolute;
   left: 0;
@@ -56,31 +57,31 @@ input[type="checkbox"] + label::before {
   background: #fff;
 }
 
-input[data-state="checked"] + label::before {
+.checkbox[data-state="checked"] + label::before {
   background: color.$primary-50;
   outline: 1px solid color.$primary-600;
   border-radius: 6px;
 }
 
-input[type="checkbox"].sm + label::before {
+.checkbox[type="checkbox"].sm + label::before {
   border-radius: space.$s1;
   width: space.$s4;
   height: space.$s4;
 }
 
-input[data-state="checked"]:focus + label::before,
-input[data-state="partly-checked"]:focus + label::before {
+.checkbox[data-state="checked"]:focus + label::before,
+.checkbox[data-state="partly-checked"]:focus + label::before {
   box-shadow: 0 0 0 4px #f4ebff;
 }
 
-input[data-state="checked"]:disabled + label::before,
-input[data-state="partly-checked"]:disabled + label::before {
+.checkbox[data-state="checked"]:disabled + label::before,
+.checkbox[data-state="partly-checked"]:disabled + label::before {
   background-color: color.$gray-100;
   outline: 1px solid color.$gray-200;
   cursor: not-allowed;
 }
 
-input[data-state="checked"] + label::after {
+.checkbox[data-state="checked"] + label::after {
   content: "";
   position: absolute;
   left: 0;
@@ -90,7 +91,7 @@ input[data-state="checked"] + label::after {
   background: url("../../../public/icons/check.svg") no-repeat center center;
 }
 
-input[data-state="unchecked"] + label::after {
+.checkbox[data-state="unchecked"] + label::after {
   content: "";
   position: absolute;
   left: 0;
@@ -99,29 +100,29 @@ input[data-state="unchecked"] + label::after {
   height: space.$s5;
 }
 
-input[data-state="checked"].sm + label::after,
-input[data-state="partly-checked"].sm + label::after {
+.checkbox[data-state="checked"].sm + label::after,
+.checkbox[data-state="partly-checked"].sm + label::after {
   width: space.$s4;
   height: space.$s4;
   border-radius: space.$s1;
 }
 
-input[data-state="checked"]:disabled + label::after,
-input[data-state="partly-checked"]:disabled + label::after {
+.checkbox[data-state="checked"]:disabled + label::after,
+.checkbox[data-state="partly-checked"]:disabled + label::after {
   opacity: 0.2;
 }
 
-input[data-state="unchecked"]:hover + label::before {
+.checkbox[data-state="unchecked"]:hover + label::before {
   outline: 1px solid color.$primary-600;
   background-color: color.$primary-50;
 }
 
-input[data-state="unchecked"]:focus + label::before {
+.checkbox[data-state="unchecked"]:focus + label::before {
   outline: 1px solid color.$primary-300;
   box-shadow: 0 0 0 4px #f4ebff;
 }
 
-input[data-state="unchecked"]:disabled + label::before {
+.checkbox[data-state="unchecked"]:disabled + label::before {
   background-color: color.$gray-100;
   outline: 1px solid color.$gray-200;
   cursor: not-allowed;
