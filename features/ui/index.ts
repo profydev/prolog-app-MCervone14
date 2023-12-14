@@ -4,3 +4,4 @@ export * from "./circle-spinner";
 export * from "./error-message";
 export * from "./checkbox";
 export * from "./select";
+export * from "./input";
