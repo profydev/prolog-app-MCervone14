@@ -1,0 +1,85 @@
+@use "styles/color";
+@use "styles/space";
+@use "styles/font";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+  max-height: 2.75rem;
+  box-sizing: border-box;
+
+  .inputContainer {
+    width: 100%;
+    position: relative;
+  }
+
+  .inputContainer > span {
+    position: absolute;
+    left: 10px;
+    top: 31%;
+    color: color.$gray-500;
+  }
+
+  .label {
+    font: font.$text-sm-medium;
+  }
+
+  .hint {
+    font: font.$text-sm-regular;
+    color: color.$gray-500;
+  }
+
+  .errorMessageText {
+    color: color.$error-500;
+    font: font.$text-sm-regular;
+    text-shadow:
+      0 0 0 #fee4e2,
+      0 1px 2px rgb(16 24 40 / 5%);
+  }
+
+  .input {
+    width: 100%;
+    margin: 6px 0;
+    border: 1px solid color.$gray-300;
+    border-radius: space.$s2;
+    padding: 10px 14px;
+    color: color.$gray-500;
+    font: font.$text-md-regular;
+    line-height: normal;
+
+    &:focus {
+      outline: none;
+      border: 1px solid color.$primary-300;
+      color: color.$gray-900;
+      box-shadow:
+        0 0 0 4px #f4ebff,
+        0 1px 2px 0 rgb(16 24 40 / 5%);
+    }
+
+    &:valid {
+      color: color.$gray-900;
+    }
+
+    &:disabled {
+      background-color: color.$gray-50;
+      color: color.$gray-500;
+    }
+
+    &.error {
+      border: 1px solid color.$error-300;
+      background: url("../../../public/icons/alert-circle.svg") no-repeat right
+        14px center/16px 16px;
+
+      &:focus {
+        box-shadow:
+          0 0 0 4px #fee4e2,
+          0 1px 2px 0 rgb(16 24 40 / 5%);
+      }
+    }
+  }
+
+  .icon {
+    padding-left: 35px;
+  }
+}
