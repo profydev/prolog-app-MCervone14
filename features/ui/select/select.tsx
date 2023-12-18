@@ -2,13 +2,16 @@ import classNames from "classnames";
 import styles from "./select.module.scss";
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
-  label: string;
+  label?: string;
   options: string[];
   icon?: JSX.Element;
   hint?: string;
   errorMessage?: string;
+  placeholder?: string;
+  getValues?: (name: string, value: string) => void;
 }
 
 export const Select = ({
@@ -17,19 +20,30 @@ export const Select = ({
   icon,
   hint,
   errorMessage,
+  placeholder,
+  getValues,
   ...props
 }: SelectProps) => {
+  const router = useRouter();
   const [status, setStatus] = useState<"default" | "filled">("default");
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState("Select Team Member");
+  const [selected, setSelected] = useState(placeholder);
 
   const handleButton = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     setOpen((prev) => !prev);
     e.currentTarget.classList.toggle(styles.chevron);
   };
 
   const handleOption = (e: React.MouseEvent<HTMLLIElement>) => {
+    e.preventDefault();
     setSelected(e.currentTarget.textContent!);
+    console.log(e);
+    getValues &&
+      getValues(
+        placeholder?.toLowerCase() as string,
+        e.currentTarget.textContent!,
+      );
     e.currentTarget.classList.toggle(styles.selected);
     setStatus("filled");
   };
@@ -71,25 +85,45 @@ export const Select = ({
           <span className={styles.hint}>{hint}</span>
         )}
         {open && (
-          <ul className={styles.options}>
-            {options.map((option, idx) => (
-              <li key={idx} className={styles.option} onClick={handleOption}>
-                {icon && <span className={styles.icon}>{icon}</span>}
-                <label htmlFor={`option-${idx}`} className={styles.label}>
-                  <span className={styles.optionText}>{option}</span>
-                  {option === selected && (
-                    <Image
-                      src="/icons/check.svg"
-                      alt="check"
-                      width={20}
-                      height={20}
-                      className={styles.check}
-                    />
-                  )}
-                </label>
-              </li>
-            ))}
-          </ul>
+          <>
+            <ul className={styles.options}>
+              {options.map((option, idx) => (
+                <li key={idx} className={styles.option} onClick={handleOption}>
+                  {icon && <span className={styles.icon}>{icon}</span>}
+                  <label htmlFor={`option-${idx}`} className={styles.label}>
+                    <span className={styles.optionText}>{option}</span>
+                    {option === selected && (
+                      <Image
+                        src="/icons/check.svg"
+                        alt="check"
+                        width={20}
+                        height={20}
+                        className={styles.check}
+                      />
+                    )}
+                  </label>
+                </li>
+              ))}
+              <button
+                className={styles.clearBtn}
+                onClick={() => {
+                  setStatus("default");
+                  setSelected(placeholder);
+                  delete router.query[placeholder?.toLowerCase() as string];
+                  router.push(
+                    {
+                      pathname: router.pathname,
+                      query: router.query,
+                    },
+                    undefined,
+                    { shallow: true },
+                  );
+                }}
+              >
+                Clear
+              </button>
+            </ul>
+          </>
         )}
       </button>
     </div>

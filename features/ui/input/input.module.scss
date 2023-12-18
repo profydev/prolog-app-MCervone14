@@ -1,16 +1,18 @@
 @use "styles/color";
 @use "styles/space";
 @use "styles/font";
+@use "styles/breakpoint";
 
 .container {
   display: flex;
   flex-direction: column;
-  max-width: 20rem;
-  max-height: 2.75rem;
-  box-sizing: border-box;
+
+  @media (min-width: breakpoint.$desktop) {
+    max-width: 20rem;
+    max-height: 2.75rem;
+  }
 
   .inputContainer {
-    width: 100%;
     position: relative;
   }
 
@@ -39,14 +41,13 @@
   }
 
   .input {
+    box-sizing: border-box;
     width: 100%;
-    margin: 6px 0;
     border: 1px solid color.$gray-300;
     border-radius: space.$s2;
     padding: 10px 14px;
     color: color.$gray-500;
     font: font.$text-md-regular;
-    line-height: normal;
 
     &:focus {
       outline: none;
@@ -80,6 +81,6 @@
   }
 
   .icon {
-    padding-left: 35px;
+    text-indent: 20px;
   }
 }

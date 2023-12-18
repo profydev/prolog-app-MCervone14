@@ -3,26 +3,30 @@
 @use "styles/font";
 
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 4.625rem;
-  max-height: 1.5rem;
-  gap: space.$s2;
-}
-
-.checkbox {
-  opacity: 0;
-}
-
-.checkbox + label {
   position: relative;
-  padding-left: 30px;
-  cursor: pointer;
-  display: inline-block;
-  color: #666;
-  font: font.$text-md-medium;
+  max-width: 1.25rem;
+  max-height: 1.5rem;
+  padding-left: space.$s6;
+  padding-right: space.$s3;
+
+  .checkbox {
+    z-index: 1000;
+    cursor: pointer;
+    position: relative;
+    width: space.$s5;
+    height: space.$s5;
+    opacity: 0;
+  }
+
+  .checkbox + label {
+    position: absolute;
+    left: 24px;
+    top: 15px;
+    padding-left: 30px;
+    display: inline-block;
+    color: #666;
+    font: font.$text-md-medium;
+  }
 }
 
 .checkbox[data-state="partly-checked"] + label::before {
@@ -35,7 +39,7 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 0;
+  top: -14px;
   width: space.$s5;
   height: space.$s5;
   background: url("../../../public/icons/minus.svg") no-repeat center center;
@@ -49,7 +53,7 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 0;
+  top: -14px;
   width: space.$s5;
   height: space.$s5;
   outline: 1px solid color.$gray-300;
@@ -85,7 +89,7 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 0;
+  top: -14px;
   width: space.$s5;
   height: space.$s5;
   background: url("../../../public/icons/check.svg") no-repeat center center;

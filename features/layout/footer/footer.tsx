@@ -28,7 +28,7 @@ export const Footer = () => {
         </nav>
         <div className={styles.logo}>
           <Image
-            src="./icons/logo-small.svg"
+            src="/icons/logo-small.svg"
             alt="ProLog Logo"
             width={23}
             height={33}

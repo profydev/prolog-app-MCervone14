@@ -16,6 +16,11 @@
   composes: cell;
   display: flex;
   align-items: center;
+
+  &:first-child {
+    padding: space.$s4 0;
+    justify-self: center;
+  }
 }
 
 .languageIcon {
