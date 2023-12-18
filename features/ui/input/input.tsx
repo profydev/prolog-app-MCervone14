@@ -1,5 +1,7 @@
 import classNames from "classnames";
 import styles from "./input.module.scss";
+import debounce from "lodash/debounce";
+import { useCallback } from "react";
 
 interface InputProps extends React.SelectHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -7,6 +9,7 @@ interface InputProps extends React.SelectHTMLAttributes<HTMLInputElement> {
   hint?: string;
   errorMessage?: string;
   showErrorMessage?: boolean;
+  getValues?: (name: string, value: string) => void;
 }
 
 export const Input = ({
@@ -15,8 +18,20 @@ export const Input = ({
   hint,
   errorMessage,
   showErrorMessage,
+  getValues,
   ...props
 }: InputProps) => {
+  const debouncedGetValues = useCallback(
+    debounce((value: string) => {
+      getValues && getValues("project", value);
+    }, 500),
+    [getValues],
+  );
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    debouncedGetValues(e.target.value.toLowerCase());
+  };
+
   return (
     <div className={styles.container}>
       <label htmlFor="input" className={styles.label}>
@@ -27,6 +42,8 @@ export const Input = ({
         <input
           placeholder={props.placeholder}
           id="input"
+          type="search"
+          onChange={handleChange}
           className={
             errorMessage
               ? classNames(styles.input, styles.error, icon && styles.icon)

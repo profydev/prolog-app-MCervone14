@@ -14,6 +14,7 @@
 }
 
 .table {
+  position: relative;
   width: 100%;
   border-collapse: collapse;
 }
@@ -22,11 +23,20 @@
   border-bottom: 1px solid color.$gray-200;
 }
 
+.checkbox {
+  top: 10px;
+  position: absolute;
+}
+
 .headerCell {
   padding: space.$s3 space.$s6;
   text-align: left;
   color: color.$gray-500;
   font: font.$text-xs-medium;
+}
+
+.headerCell:nth-child(1) {
+  padding-left: 57px;
 }
 
 .paginationContainer {

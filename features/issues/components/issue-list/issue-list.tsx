@@ -17,6 +17,32 @@ export function IssueList() {
   const issuesPage = useGetIssues(page);
   const projects = useGetProjects();
 
+  const { items, meta } = issuesPage.data || {};
+
+  let filteredItems = items;
+
+  if (router.query.project) {
+    filteredItems = items?.filter((issue) =>
+      issue.name.toLowerCase().includes(router.query.project as string),
+    );
+  }
+
+  if (router.query.level) {
+    filteredItems = items?.filter((issue) =>
+      issue.level.toLowerCase().includes(router.query.level as string),
+    );
+  }
+
+  if (router.query.status === "unresolved") {
+    filteredItems = items?.filter((issue) =>
+      issue.status.toLowerCase().includes("open"),
+    );
+  } else if (router.query.status === "resolved") {
+    filteredItems = items?.filter((issue) =>
+      issue.status.toLowerCase().includes(router.query.status as string),
+    );
+  }
+
   if (projects.isLoading || issuesPage.isLoading) {
     return <div>Loading</div>;
   }
@@ -38,12 +64,11 @@ export function IssueList() {
     }),
     {} as Record<string, ProjectLanguage>,
   );
-  const { items, meta } = issuesPage.data || {};
 
   return (
     <div className={styles.container}>
       <table className={styles.table}>
-        <thead>
+        <thead className={styles.thead}>
           <tr className={styles.headerRow}>
             <th className={styles.headerCell}>Issue</th>
             <th className={styles.headerCell}>Level</th>
@@ -52,7 +77,7 @@ export function IssueList() {
           </tr>
         </thead>
         <tbody>
-          {(items || []).map((issue) => (
+          {(filteredItems || []).map((issue) => (
             <IssueRow
               key={issue.id}
               issue={issue}

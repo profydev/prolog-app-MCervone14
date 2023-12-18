@@ -50,9 +50,8 @@ describe("Footer", () => {
         cy.wrap($el).should("have.attr", "href", "/dashboard#");
       });
 
-    cy.get("footer")
-      .find("img")
-      .should("have.attr", "src", "./icons/logo-small.svg")
+    cy.get(".footer_logo__7KI7C > img")
+      .should("have.attr", "src", "/icons/logo-small.svg")
       .and("have.css", "width", "23px")
       .and("have.css", "height", "33px");
   });
